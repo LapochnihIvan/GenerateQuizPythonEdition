@@ -12,7 +12,7 @@ class Reader:
     def catch_errors(self) -> List[str]:
         error_files: List[str] = []
         for fileName in self.__filesNames:
-            with open('input/' + fileName) as stream:
+            with open('input/' + fileName, encoding='utf-8') as stream:
                 if len(stream.read().split('\n')) < 20:
                     error_files.append(fileName)
         return error_files
