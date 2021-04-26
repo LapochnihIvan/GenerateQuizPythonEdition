@@ -1,10 +1,8 @@
-from sys import argv
-from sys import exit
+from sys import argv, exit
 from typing import List
 from functools import partial
 
-from PyQt5.QtCore import QRect
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout
 
 
@@ -46,16 +44,16 @@ class GUI:
         ''')
         self.__label.setObjectName('label')
         self.__label.setAlignment(Qt.AlignHCenter)
-        vBox = QVBoxLayout()
-        vBox.addWidget(self.__label)
+        v_box = QVBoxLayout()
+        v_box.addWidget(self.__label)
         for numButt in range(4):
             self.__buttons.append(QPushButton())
             self.__buttons[numButt].setObjectName('stdButt')  # временно
             self.__buttons[numButt].clicked.connect(partial(self.__action_performed, numButt))
-            vBox.addWidget(self.__buttons[numButt])
-        hBox = QHBoxLayout()
-        hBox.addLayout(vBox)
-        self.__frame.setLayout(hBox)
+            v_box.addWidget(self.__buttons[numButt])
+        h_box = QHBoxLayout()
+        h_box.addLayout(v_box)
+        self.__frame.setLayout(h_box)
         self.__frame.showFullScreen()
 
     def set_quest_frame(self, quest: str, texts_ans: List[str]) -> None:
@@ -79,10 +77,10 @@ class GUI:
             self.__buttons[numButt].setDisabled(True)
 
     def create_error_window(self, error_files: List[str], fatal_error: bool) -> None:
-        screenSize: QRect = QApplication.desktop().screenGeometry()
-        halfOfScreenWidth: int = screenSize.width() / 2
-        halfOfScreenHeight: int = screenSize.height() / 2
-        self.__frame.resize(halfOfScreenWidth / 3, halfOfScreenHeight / 4)
+        screen_size: QRect = QApplication.desktop().screenGeometry()
+        half_of_screen_width: int = screen_size.width() / 2
+        half_of_screen_height: int = screen_size.height() / 2
+        self.__frame.resize(half_of_screen_width / 3, half_of_screen_height / 4)
         text: str = ''
         if fatal_error:
             text += '<html><p>Не удалось создать файлы:</p>'
@@ -93,9 +91,9 @@ class GUI:
         text += '</html>'
         self.__label.setText(text)
         self.__label.setStyleSheet('color: #ff0000')
-        vBox = QVBoxLayout()
-        vBox.addWidget(self.__label)
-        self.__frame.setLayout(vBox)
+        v_box = QVBoxLayout()
+        v_box.addWidget(self.__label)
+        self.__frame.setLayout(v_box)
         self.__frame.show()
         exit(self.__app.exec_())
 

@@ -30,11 +30,11 @@ class Quiz:
         return bool(self.__reader.catch_fatal_errors())
 
     def get_error_files(self) -> List[str]:
-        errorFiles: List[str] = self.__reader.catch_fatal_errors()
-        if not errorFiles:
-            errorFiles = self.__reader.catch_errors()
-            if not errorFiles:
+        error_files: List[str] = self.__reader.catch_fatal_errors()
+        if not error_files:
+            error_files = self.__reader.catch_errors()
+            if not error_files:
                 self.__quests = Reader.read_quests()
                 self.__textsAns = Reader.read_texts_ans()
                 self.__correctAns = Reader.read_correct_ans()
-        return errorFiles
+        return error_files

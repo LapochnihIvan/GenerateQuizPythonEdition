@@ -10,15 +10,15 @@ class Reader:
                                         'correctAns.in.txt']
 
     def catch_errors(self) -> List[str]:
-        errorFiles: List[str] = []
+        error_files: List[str] = []
         for fileName in self.__filesNames:
-            stream = open('input/' + fileName)
-            if len(stream.read().split('\n')) < 20:
-                errorFiles.append(fileName)
-        return errorFiles
+            with open('input/' + fileName) as stream:
+                if len(stream.read().split('\n')) < 20:
+                    error_files.append(fileName)
+        return error_files
 
     def catch_fatal_errors(self) -> List[str]:
-        errorFiles: List[str] = []
+        error_files: List[str] = []
         if not exists('input'):
             try:
                 mkdir('input')
@@ -30,8 +30,8 @@ class Reader:
                     with open(filename, 'w') as stream:
                         stream.close()
                 except PermissionError:
-                    errorFiles.append('input/' + filename)
-        return errorFiles
+                    error_files.append('input/' + filename)
+        return error_files
 
     @staticmethod
     def read_quests() -> List[str]:
