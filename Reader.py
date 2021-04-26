@@ -35,8 +35,11 @@ class Reader:
 
     @staticmethod
     def read_quests() -> List[str]:
+        result: List[str] = []
         with open('input/quests.in.txt', encoding='utf-8') as stream:
-            return stream.read().split(';')
+            for ans in stream.read().split(';'):
+                result.append(ans.replace('\n', '', 1))
+            return result
 
     @staticmethod
     def read_texts_ans() -> List[List[str]]:
