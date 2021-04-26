@@ -9,7 +9,7 @@ class Reader:
                                         'textsAns.in.txt',
                                         'correctAns.in.txt']
 
-    def catchErrors(self) -> List[str]:
+    def catch_errors(self) -> List[str]:
         errorFiles: List[str] = []
         for fileName in self.__filesNames:
             stream = open('input/' + fileName)
@@ -17,7 +17,7 @@ class Reader:
                 errorFiles.append(fileName)
         return errorFiles
 
-    def catchFatalErrors(self) -> List[str]:
+    def catch_fatal_errors(self) -> List[str]:
         errorFiles: List[str] = []
         if not exists('input'):
             try:
@@ -34,12 +34,12 @@ class Reader:
         return errorFiles
 
     @staticmethod
-    def readQuests() -> List[str]:
+    def read_quests() -> List[str]:
         with open('input/quests.in.txt', encoding='utf-8') as stream:
             return stream.read().split(';')
 
     @staticmethod
-    def readTextsAns() -> List[List[str]]:
+    def read_texts_ans() -> List[List[str]]:
         result: List[List[str]] = []
         with open('input/textsAns.in.txt', encoding='utf-8') as stream:
             for ans in stream.read().split(';'):
@@ -47,6 +47,6 @@ class Reader:
         return result
 
     @staticmethod
-    def readCorrectAns() -> List[int]:
+    def read_correct_ans() -> List[int]:
         with open('input/correctAns.in.txt') as stream:
             return list(map(int, stream.read().split('\n')))

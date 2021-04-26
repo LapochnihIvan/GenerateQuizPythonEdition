@@ -11,30 +11,30 @@ class Quiz:
         self.__numRound: int = 0
         self.__reader: Reader = Reader()
 
-    def nextRound(self) -> None:
+    def next_round(self) -> None:
         self.__numRound += 1
 
-    def getQuest(self) -> str:
+    def get_quest(self) -> str:
         return self.__quests[self.__numRound]
 
-    def getCorrectAns(self) -> int:
+    def get_correct_ans(self) -> int:
         return self.__correctAns[self.__numRound]
 
-    def isEmpty(self) -> bool:
+    def is_empty(self) -> bool:
         return self.__numRound == 20
 
-    def getTextsAns(self) -> List[str]:
+    def get_texts_ans(self) -> List[str]:
         return self.__textsAns[self.__numRound]
 
-    def isFatalError(self) -> bool:
-        return bool(self.__reader.catchFatalErrors())
+    def is_fatal_error(self) -> bool:
+        return bool(self.__reader.catch_fatal_errors())
 
-    def getErrorFiles(self) -> List[str]:
-        errorFiles: List[str] = self.__reader.catchFatalErrors()
+    def get_error_files(self) -> List[str]:
+        errorFiles: List[str] = self.__reader.catch_fatal_errors()
         if not errorFiles:
-            errorFiles = self.__reader.catchErrors()
+            errorFiles = self.__reader.catch_errors()
             if not errorFiles:
-                self.__quests = Reader.readQuests()
-                self.__textsAns = Reader.readTextsAns()
-                self.__correctAns = Reader.readCorrectAns()
+                self.__quests = Reader.read_quests()
+                self.__textsAns = Reader.read_texts_ans()
+                self.__correctAns = Reader.read_correct_ans()
         return errorFiles
