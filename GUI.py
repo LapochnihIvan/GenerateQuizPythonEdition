@@ -61,7 +61,7 @@ class GUI:
     def set_quest_frame(self, quest: str, texts_ans: List[str]) -> None:
         self.__label.setText(quest)
         for numButt in range(4):
-            self.__buttons[numButt].setStyleSheet('background-color: #666')
+            self.__buttons[numButt].setStyleSheet('background-color: #00CED1')
             self.__buttons[numButt].setText(texts_ans[numButt])
 
     def get_response(self) -> int:
