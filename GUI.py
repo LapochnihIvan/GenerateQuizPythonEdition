@@ -24,7 +24,7 @@ class GUI:
     def generation(self) -> None:
         self.__app.setStyleSheet('''
             QLabel#label {
-                font: bold 14px
+                font: bold 20px
             }
 
             QPushButton#stdButt, QPushButton#wrongAns {
@@ -32,7 +32,7 @@ class GUI:
                 border-width: 2px
                 border-radius: 10px
                 border-color: #2F2F2F
-                font: bold 14px
+                font: bold 10px
                 padding: 6px
             }
 
