@@ -8,10 +8,10 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLay
 
 class GUI:
     def __init__(self):
-        self.__app = QApplication(argv)
-        self.__frame = QWidget()
+        self.__app: QApplication = QApplication(argv)
+        self.__frame: QWidget = QWidget()
         self.__panel: QVBoxLayout = QVBoxLayout()
-        self.__buttons = []
+        self.__buttons: List[QPushButton] = []
         self.__label: QLabel = QLabel()
         self.__numPressButt: int = 0
         self.__press: bool = False
